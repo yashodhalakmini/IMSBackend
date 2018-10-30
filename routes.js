@@ -33,18 +33,18 @@ routes.get("/", function (req, res) {
     res.status(200).render("index");
 });
 
-routes.post("/login", passport.authenticate("local", {
-    failureRedirect: "/"
-}), function (req, res, next) {
-    console.log(req.user);
-    console.log("sssssrs");
-    if (req.user.usertype === "user") {
-        res.redirect("/user");
-    }
-    if (req.user.usertype === "admin") {
-        res.redirect("/admin");
-    }
-});
+// routes.post("/login", passport.authenticate("local", {
+//     failureRedirect: "/"
+// }), function (req, res, next) {
+//     console.log(req.user);
+//     console.log("sssssrs");
+//     if (req.user.usertype === "user") {
+//         res.redirect("/user");
+//     }
+//     if (req.user.usertype === "admin") {
+//         res.redirect("/admin");
+//     }
+// });
 
 // routes.post("/login",function(req,res,next){
 //     console.log(req.body);
