@@ -11,10 +11,15 @@ var hallSchema = mongoose.Schema({
             type: String,
             required: false
         },
-        computerlab: {
+        computerlab1: {
             type: String,
             required: false
         },
+        computerlab2: {
+            type: String,
+            required: false
+        },
+
         office: {
             type: String,
             required: false
