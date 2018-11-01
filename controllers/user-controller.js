@@ -27,11 +27,12 @@ adduser = function (req, res, next) {
     });
 
 }
-
-
-
-
 module.exports.adduser = adduser;
+
+
+
+
+//function to serch user
 
 searchUser = function (req, res, next) {
     var userData = req.body
@@ -60,3 +61,44 @@ searchUser = function (req, res, next) {
 }
 
 module.exports.searchUser = searchUser;
+
+
+//function to delete user from the system
+
+deleteuser = function (req, res, next) {
+    var userData = req.body;
+    console.log(userData);
+    User.deleteOne({
+        username: userData.username
+    }, function (err) {
+        if (err) {
+            res.status(500);
+            res.send({
+                errors: "internal server errors"
+            });
+        } else {
+            res.status(200);
+            res.send({
+                success: "successfuly deleted the user"
+            });
+        }
+    });
+}
+
+module.exports.deleteuser = deleteuser;
+
+//function to update  inventory to the system
+
+updateuser = function (req, res, next) {
+    var userData = req.body;
+    User.findOneAndUpdate({
+        username: userData.username
+    }, req.body).then(function () {
+        User.findOne({
+            username: userData.username
+        }).then(function (user) {
+            res.send(user);
+        });
+    });
+};
+module.exports.updateuser = updateuser;

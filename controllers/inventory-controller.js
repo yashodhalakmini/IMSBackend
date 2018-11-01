@@ -109,6 +109,7 @@ updateinventory = function (req, res, next) {
 };
 module.exports.updateinventory = updateinventory;
 
+//function to status  inventory to the system
 
 statusinventory= function(req,res, next){
     var status= req.params.status;
