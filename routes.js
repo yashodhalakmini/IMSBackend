@@ -66,66 +66,66 @@ routes.get("/admin/inventorymanage", ensureAuthenticated, adminAuthorize, functi
 
 //add new user
 
-routes.post("/signup", function (req, res, next) {
-    var userData = req.body;
+// routes.post("/signup", function (req, res, next) {
+//     var userData = req.body;
 
-    User.findOne({
-        username: req.body.username
-    }, function (err, user) {
-        if (err) {
-            res.json({
-                error: "internal server error"
-            });
-        } else if (user) {
-            res.json({
-                error: "user already exsist"
-            });
-        } else if (!user) {
-            var newUser = new User(userData);
-            newUser.save().then(function (user) {
-                res.send(user);
-            });
-            //res.json({success:"user sucseefuly added"});
-            //res.json(newU);
-        }
+//     User.findOne({
+//         username: req.body.username
+//     }, function (err, user) {
+//         if (err) {
+//             res.json({
+//                 error: "internal server error"
+//             });
+//         } else if (user) {
+//             res.json({
+//                 error: "user already exsist"
+//             });
+//         } else if (!user) {
+//             var newUser = new User(userData);
+//             newUser.save().then(function (user) {
+//                 res.send(user);
+//             });
+//             //res.json({success:"user sucseefuly added"});
+//             //res.json(newU);
+//         }
 
-    });
-    // User.findOne({
-    //     username: userData.username
-    // }, function (err, user) {
-    //     if (err) {
-    //         res.status(500);
-    //         res.send({
-    //             error: "Error...."
-    //         });
-    //         return;
-    //     }
-    //     if (user) {
-    //         res.status(500);
-    //         res.send({
-    //             error: "user is already exist."
-    //         });
-    //         return;
-    //     }
-    //     var newUser = new User(userData);
-    //     newUser.save();
-    //     res.status(201);
-    //     res.send(newUser);
-    // });
-    // // User.save({
-    //     userData,
-    //     function (err, user) {
-    //         if (err) {
-    //             res.status(403);
-    //             res.send("Error.....");
-    //         }
-    //         if (user) {
-    //             res.status(201);
-    //             res.send(user);
-    //         }
-    //     }
-    // });
-});
+//     });
+// User.findOne({
+//     username: userData.username
+// }, function (err, user) {
+//     if (err) {
+//         res.status(500);
+//         res.send({
+//             error: "Error...."
+//         });
+//         return;
+//     }
+//     if (user) {
+//         res.status(500);
+//         res.send({
+//             error: "user is already exist."
+//         });
+//         return;
+//     }
+//     var newUser = new User(userData);
+//     newUser.save();
+//     res.status(201);
+//     res.send(newUser);
+// });
+// // User.save({
+//     userData,
+//     function (err, user) {
+//         if (err) {
+//             res.status(403);
+//             res.send("Error.....");
+//         }
+//         if (user) {
+//             res.status(201);
+//             res.send(user);
+//         }
+//     }
+// });
+//});
 
 routes.post("/plain", function (req, res, next) {
     res.json(req.body);

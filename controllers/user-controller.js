@@ -1,11 +1,9 @@
-
-
 const User = require("../models.js/user");
 
 
-adduser=function (req, res, next) {
+adduser = function (req, res, next) {
     var userData = req.body;
-console.log("ssss");
+    console.log("ssss");
     User.findOne({
         username: req.body.username
     }, function (err, user) {
@@ -20,22 +18,22 @@ console.log("ssss");
         } else if (!user) {
             var newUser = new User(userData);
             newUser.save().then(function (user) {
-                res.send("succes fully added user");
+                res.send("succesfully added user");
             });
             //res.json({success:"user sucseefuly added"});
             //res.json(newU);
         }
 
     });
-    
+
 }
 
 
 
 
-module.exports.adduser=adduser;
+module.exports.adduser = adduser;
 
-searchUser=function(req,res,next){
+searchUser = function (req, res, next) {
     var userData = req.body
     console.log(userData);
     User.findOne({
@@ -47,13 +45,13 @@ searchUser=function(req,res,next){
             });
         } else if (user) {
             res.json({
-                username:user.username,
-                type:user.usertype
+                username: user.username,
+                type: user.usertype
 
             });
         } else if (!user) {
-            
-                res.send("no user");
+
+            res.send("no user");
             //res.json({success:"user sucseefuly added"});
             //res.json(newU);
         }
@@ -61,4 +59,4 @@ searchUser=function(req,res,next){
     });
 }
 
-module.exports.searchUser=searchUser;
+module.exports.searchUser = searchUser;
